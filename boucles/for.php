@@ -111,17 +111,17 @@ echo '<br><br>';
 //Créer un tableau pour les mois de l'année et affiché tous les mois de Janvier à Décembre
 //modifier et/ou remplacer les éléments ci-dessous
 echo "8.Les mois depuis le debut de l'annee : <br>";
-$mois = [];
-for ($i = 0; $i < 0; $i) {
-    echo '';
+$mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+for ($i = 0; $i < count($mois); $i++) {
+    echo $mois[$i].' ';
 }
 echo '<br><br>';
 
 //Afficher les mois de la fin de l'année jusqu'au début de l'année
 //modifier et/ou remplacer les éléments ci-dessous
 echo "9.Les mois depuis la fin de l'annee : <br>";
-for ($i = 0; $i < 0; $i) {
-    echo '';
+for ($i = count($mois) - 1; $i >= 0; $i--) {
+   echo $mois[$i].' ';
 }
 echo '<br><br>';
 //----------------------------------------
@@ -149,13 +149,48 @@ $college = array(
 
 echo '10.Les eleves du college : <br>';
 //ajoutez votre code ici
-echo '<br><br>';
+foreach($college as $classe => $eleves) {
+  echo '<br>'.$classe.':<br>';
+    foreach($eleves as $key => $value) {
+      echo '- ';
+      foreach($value as $value){ 
+        echo $value.' ';    
+     }
+     echo '<br>';
+  }
+}
+  echo '<br><br>';
+
+
+echo '7.Les voitures dans la concession :';
+foreach ($vehiculeConcession as $gamme => $vehicule) {
+    echo '<br>'.$gamme;
+    foreach ($vehicule as $propriete => $valeur) {
+        echo $propriete.' : '.$valeur.'<br>';
+    }
+}
+
+    echo '<br><br>';
 
 //----------------------------------------
 //Afficher le nom et prénoms des élèves de ce collège
 //reprenez le tableau ci-dessus, ajoutez des éléves pour la classe de troisième et réaffichez tout
 echo '11.Les eleves du college (avec les nouveaux arrivants): <br>';
 //ajoutez votre code ici
+$college['Troisieme'] = array(array('Nom' => 'Dupont', 'Prenom' => 'Jean'),
+array('Nom' => 'Martin', 'Prenom' => 'Jacques'));
+
+foreach($college as $classe => $eleves) {
+  echo '<br>'.$classe.':<br>';
+    foreach($eleves as $key => $value) {
+      echo '- ';
+      foreach($value as $value){ 
+        echo $value.' ';    
+     }
+  echo '<br>';
+  }
+}
+
 echo '<br><br>';
 
 //----------------------------------------
@@ -197,6 +232,19 @@ $videotheque = array(
 
 echo '12.Mes films : <br>';
 //ajoutez votre code ici
+foreach($videotheque as $liste) {
+    echo '<br>';
+    foreach($liste as $key => $value)
+    if (!is_array($value)) {
+      echo '<br>'.$key.': '.$value;
+    } else {
+      echo '<br>'.$key.': ';
+        foreach($value as $value) {
+        echo '<br>- '.$value;
+      }
+    }
+  }
+  
 echo '<br><br>';
 
 //----------------------------------------
@@ -207,4 +255,32 @@ echo '<br><br>';
 
 echo '13.Mes films : <br>';
 //ajoutez votre code ici
+$videotheque[] = array('nom' => 'Le Cinquième Elément',
+                            'date' => 1997,
+                            'realisateur' => 'Luc Besson',
+                            'acteurs' => array(
+                                'Bruce Willis', 'Milla Jovovich', 'Ian Holm', 'Gary Oldman', 'Chris Tucker'),
+                              'synopsis' => 'Au XXIII siècle, dans un univers étrange et coloré, où tout espoir de survie est impossible sans la découverte du cinquième élément, un héros affronte le mal pour sauver l\'humanité.',
+);
+
+$videotheque[] = array('nom' => 'Avengers',
+                            'date' => 2012,
+                            'realisateur' => 'Joss Whedon',
+                            'acteurs' => array(
+                                'Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth', 'Scarlett Johansson', 'Jeremy Renner'),
+                            'synopsis' => 'Lorsque Nick Fury, le directeur du S.H.I.E.L.D., l\'organisation qui préserve la paix au plan mondial, cherche à former une équipe de choc pour empêcher la destruction du monde, Iron Man, Hulk, Thor, Captain America, Hawkeye et Black Widow répondent        présents. Les Avengers ont beau constituer la plus fantastique des équipes, il leur reste encore à apprendre à travailler ensemble, et non les uns contre les autres, d\'autant que le redoutable Loki a réussi à accéder au Cube Cosmique et à son pouvoir illimité...');
+
+foreach($videotheque as $liste) {
+  echo '<br>';
+    foreach($liste as $key => $value)
+    if (!is_array($value)) {
+      echo '<br>'.$key.': '.$value;
+    } else {
+      echo '<br>'.$key.': ';
+        foreach($value as $value) {
+        echo '<br>- '.$value;
+      }
+    }
+  }
+
 echo '<br><br>';
